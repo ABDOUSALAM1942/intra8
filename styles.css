@@ -1,0 +1,187 @@
+/* Import Google font - Poppins */
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+
+:root {
+  --primary-color: #f6f7fb;
+  --white-color: #fff;
+  --black-color: #18191a;
+  --red-color: #e74c3c;
+}
+
+body {
+  display: flex;
+  min-height: 100vh;
+  align-items: center;
+  justify-content: center;
+  background: var(--primary-color);
+}
+
+body.dark {
+  --primary-color: #242526;
+  --white-color: #18191a;
+  --black-color: #fff;
+  --red-color: #e74c3c;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 60px;
+
+}
+
+.container .clock {
+  display: flex;
+  height: 400px;
+  width: 400px;
+  border-radius: 50%;
+  align-items: center;
+  justify-content: center;
+  background-color: rgb(20, 20, 75);
+  box-shadow: 0 15px 25px rgba(0, 0, 0, 0.1), 0 25px 45px rgba(0, 0, 0, 0.1);
+  position: relative;
+}
+
+.clock label {
+  position: absolute;
+  inset: 20px;
+  text-align: center;
+  transform: rotate(calc(var(--i) * (360deg / 12)));
+}
+
+.clock label span {
+  display: inline-block;
+  font-size: 30px;
+  font-weight: 600;
+  color: var(--black-color);
+  transform: rotate(calc(var(--i) * (-360deg / 12)));
+  color: white;
+}
+
+.container .indicator {
+  position: absolute;
+  height: 10px;
+  width: 10px;
+  display: flex;
+  justify-content: center;
+}
+
+.indicator::before {
+  content: "";
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  border-radius: 50%;
+  z-index: 100;
+  background: var(--black-color);
+  border: 2px solid var(--red-color);
+}
+
+.indicator .hand {
+  position: absolute;
+  height: 70px;
+  width: 4px;
+  bottom: 0;
+  border-radius: 25px;
+  transform-origin: bottom;
+  background: green;
+}
+
+.hand.minute {
+  height: 68px;
+  width: 5px;
+  background: yellow;
+}
+
+.hand.hour {
+  height: 45px;
+  width: 6px;
+  background: red;
+}
+
+.mode-switch {
+  margin-top: -1rem;
+  border-radius: 8px;
+  font-size: 25px;
+  font-weight: 400;
+  display: inline-block;
+  color: white;
+  cursor: pointer;
+}
+
+/* Styles des aiguilles */
+.hand {
+  position: absolute;
+  transform-origin: center bottom;
+}
+
+.hand::before {
+  content: "";
+  position: absolute;
+  bottom: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 10px;
+  height: 10px;
+  border-style: solid;
+  border-radius: 50%;
+  /* Définir un rayon pour créer une forme de cercle */
+}
+
+.hand.second::before {
+color: green;
+background-color: green;
+  height: 8px;
+  /* Longueur de la seconde */
+  width: 8px;
+  border-radius: 50%;
+  /* Ajoutez un border-radius pour créer un cercle */
+  content: "";
+  position: absolute;
+  bottom: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  border-style: solid;
+  top: -50px;
+  box-shadow: 0px 0px 10px 5px rgba(6, 248, 6, 0.976);
+}
+
+.hand.minute::before {
+  background: yellow;
+  height: 8px;
+  /* Longueur de la minute */
+  width: 8px;
+  border-radius: 50%;
+  /* Ajoutez un border-radius pour créer un cercle */
+  content: "";
+  position: absolute;
+  bottom: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  border-style: solid;
+  top: -50px;
+  box-shadow: 0px 0px 10px 5px #f6f603d8;
+}
+
+.hand.hour::before {
+  background: red;
+  height: 8px;
+  width: 8px;
+  border-radius: 50%;
+  content: "";
+  position: absolute;
+  bottom: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  border-style: solid;
+  top: -50px;
+  box-shadow: 0px 0px 10px 5px rgba(245, 5, 5, 0.877);
+}
