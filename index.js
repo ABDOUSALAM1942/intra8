@@ -1,5 +1,4 @@
 // 
-// Get references to DOM elements
 const body = document.querySelector("body"),
   hourHand = document.querySelector(".hour"),
   minuteHand = document.querySelector(".minute"),
@@ -26,20 +25,36 @@ modeSwitch.addEventListener("click", () => {
 });
 
 const updateTime = () => {
-  // Get current time and calculate degrees for clock hands
-  let date = new Date(),
-    secToDeg = (date.getSeconds() / 60) * 360,
-    minToDeg = (date.getMinutes() / 60) * 360,
-    hrToDeg = (date.getHours() / 12) * 360;
+  // Obtenir l'heure actuelle et calculer les degrés des aiguilles de l'horloge
 
-  // Rotate the clock hands to the appropriate degree based on the current time
+  // Obtient la date et l'heure actuelle
+  let date = new Date();
+
+
+  // Obtenez les heures, minutes et secondes de la date actuelle
+  let seconds = date.getSeconds();
+  let minutes = date.getMinutes();
+  let hours = date.getHours();
+
+  // Calculez les degrés pour les aiguilles de l'horloge
+  let secToDeg = (seconds / 60) * 360;
+  let minToDeg = (minutes / 60) * 360;
+  let hrToDeg = ((hours % 12) / 12) * 360;
+
+  // Fait tourner les aiguilles de l'horloge aux degrés appropriés en fonction de l'heure actuelle
+
+  // Fait tourner l'aiguille des secondes
   secondHand.style.transform = `rotate(${secToDeg}deg)`;
+
+  // Fait tourner l'aiguille des minutes
   minuteHand.style.transform = `rotate(${minToDeg}deg)`;
+
+  // Fait tourner l'aiguille des heures
   hourHand.style.transform = `rotate(${hrToDeg}deg)`;
 };
 
-// call updateTime to set clock hands every second
+// Appelle updateTime pour positionner les aiguilles de l'horloge chaque seconde
 setInterval(updateTime, 1000);
 
-//call updateTime function on page load
+// Appelle la fonction updateTime lors du chargement de la page pour initialiser l'horloge
 updateTime();
